@@ -1,4 +1,5 @@
 import Interact.recv_msg
+import Interact.OptionDict
 
 function handle_msg(w::InputWidget, msg)
     if msg.content["data"]["method"] == "update" &&
@@ -21,7 +22,7 @@ function handle_msg{T}(w::Button{T}, msg)
     end
 end
 
-idxs2labels(d::Interact.OptionDict, indexes) = collect(keys(d))[indexes]
+idxs2labels(d::OptionDict, indexes) = collect(keys(d))[indexes]
 
 function handle_msg{view}(w::Options{view}, msg)
     if msg.content["data"]["method"] == "update" && haskey(msg.content["data"], "state")
